@@ -1,0 +1,176 @@
+@import "./variables.scss";
+@import "./mediaQuery";
+@import "./reuseables";
+
+.body {
+    .topSection {
+        position: sticky;
+        width: 100%;
+        top: 0px;
+        // height: 260px;
+        // padding: 20px;
+        background-color: $secondary-color;
+    }
+    
+    .negativeValue {
+        color: $red;
+    }
+    .positiveValue {
+        color: $green;
+    }
+
+    .topArea {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        p {
+            color: rgba($white, 0.6);
+        }
+    }
+
+    .sectionIndicator {
+        color: rgba($white, 0.6);
+        margin-bottom: 12px;
+    }
+
+    .topGainers {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+
+        .cardsCarousel {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap;
+            width: 100%;
+            overflow-x: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .eachCard {
+                width: 200px;
+                min-width: 200px;
+                border: 1px solid rgba($white, 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                background-color: lighten($color: $secondary-color, $amount: 5%);
+
+                &:hover {
+                    background: linear-gradient(270deg, #282828 0%, rgba(40, 40, 40, 0) 94.09%);
+                }
+
+                &__coinNameSection {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 8px;
+                    // justify-content: space-between;
+
+                    .coinImage {
+                        flex-basis: 25%;
+                        height: 100%;
+                        // img {
+                        //     width: 100%;
+                        //     height: 100%;
+                        //     object-fit: contain;
+                        // }
+                    }
+                    .coinName {
+                        flex-basis: 75%;
+                        h6 {
+                            font-size: $font-size-16 - 2px;
+                        }
+                        p {
+                            font-size: $font-size-16 - 4px;
+                            color: rgba($white, 0.8);
+                        }
+                    }
+                }
+
+                &__price {
+                    font-size: $font-size-16 + 2px;
+                    font-weight: $fontWeight-800;
+                }
+
+                &__precentageRate {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    margin-top: 12px;
+                    p {
+                        font-size: $font-size-16;
+                    }
+                }
+            }
+        }
+    }
+
+    .otherAssets {
+        // display: flex;
+        // flex-direction: column;
+        // border: 1px solid #fff;
+        // height: 100%;
+        // min-height: 100%;
+
+        .assetsContainer {
+            display: flex;
+            flex-direction: column;
+            // border: 1px solid #fff;
+            height: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+
+            .eachAsset {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px;
+                border-bottom: 1px solid rgba($white, 0.1);
+
+                &:nth-child(1) {
+                    border-top: none;
+                }
+
+                &:hover {
+                    background: linear-gradient(270deg, #282828 0%, rgba(40, 40, 40, 0) 94.09%);
+                }
+
+                &__image {
+                    width: 38px;
+                    height: 38px;
+                    img {
+                        object-fit: contain;
+                    }
+                }
+
+                &__name {
+                    h6 {
+                        font-size: $font-size-16 - 2px;
+                    }
+                    p {
+                        font-size: $font-size-16 - 4px;
+                        color: rgba($white, 0.6);
+                    }
+                }
+
+                &__priceArea {
+                    margin-left: auto;
+                    text-align: right;
+
+                    h6 {
+                        font-size: $font-size-16 - 2px;
+                    }
+                    p {
+                        font-size: $font-size-16 - 4px;
+                        letter-spacing: 0.2px;
+                    }
+                }
+            }
+        }
+    }
+}

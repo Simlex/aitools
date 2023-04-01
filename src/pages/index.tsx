@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
 import styles from '@/styles/Home.module.scss';
 
 export default function Home() {
@@ -11,12 +11,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.homepage}>
-        <p className={styles.appName}>
+        <div className={styles.appName}>
           <div>
             AITools
             <span>incoming...</span>
           </div>
-        </p>
+        </div>
       </div>
     </>
   )
