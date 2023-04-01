@@ -1,0 +1,68 @@
+@import "./variables.scss";
+@import "./mediaQuery";
+@import "./reuseables";
+
+.homepage {
+    background-color: $secondary-color;
+    min-height: 100vh;
+    display: flex;
+
+    .appName {
+        margin: auto;
+        // border: 1px solid #fff;
+        width: 200px;
+        height: 200px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        font-size: 24px;
+        font-weight: $fontWeight-700;
+        position: relative;
+        transform: translateZ(0);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0px 0px 24px 2px rgba(83, 215, 255, 0.08);
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span {
+                font-size: $font-size-16 - 4px;
+                font-weight: $fontWeight-300;
+            }
+        }
+        
+
+        &::after,
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+        }
+
+        &::before {
+            animation: 6s rotate linear infinite;
+            width: 200%;
+            height: 200%;
+            background: var(--tile-border);
+            background: conic-gradient(from 179.82deg at 50% 50%, rgba(12, 20, 20, 0.24) 0deg, rgba(89, 0, 159, 0.0689191) 80.63deg, rgba(112, 195, 255, 0.442708) 163.12deg, rgba(16, 129, 101, 0.49775) 294.38deg, #0F1F1B 360deg);
+        }
+        &::after {
+            inset: 0;
+            padding: 1px;
+            border-radius: var(--border-radius);
+            background: linear-gradient(to bottom right, rgba($primary-color, 0.4), rgba(var(--tile-end-rgb), 1));
+            background-clip: content-box;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+      transform: rotate(-360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
