@@ -14,7 +14,7 @@ const Tracker: FunctionComponent<TrackerProps> = (): ReactElement => {
             <div className={styles.topSection}>
                 <div className={styles.topArea}>
                     <h2>Portfolio Tracker</h2>
-                    <p>See all</p>
+                    {/* <p>See all</p> */}
                 </div>
                 <div className={styles.topGainers}>
                     <p className={styles.sectionIndicator}>Top gainers in last 24hrs</p>
@@ -48,27 +48,21 @@ const Tracker: FunctionComponent<TrackerProps> = (): ReactElement => {
                 <p className={styles.sectionIndicator}>Other Assets</p>
                 <div className={styles.assetsContainer}>
                     {
-                        ([...Array(20)]).map((index) => (
-                            <div key={index}>
-                                {
-                                    coinInfo.map((eachCoinInfo, index) => (
-                                        <div className={styles.eachAsset} key={index}>
-                                            <div className={styles.eachAsset__image}>
-                                                <Image src={eachCoinInfo.coinImage} alt={eachCoinInfo.coinName} />
-                                            </div>
-                                            {/* <div className={styles.eachAsset__info}> */}
-                                            <div className={styles.eachAsset__name}>
-                                                <h6>{eachCoinInfo.coinCode}</h6>
-                                                <p>{eachCoinInfo.coinName}</p>
-                                            </div>
-                                            <div className={styles.eachAsset__priceArea}>
-                                                <h6>{eachCoinInfo.coinPrice}</h6>
-                                                <p className={eachCoinInfo.coinRate.startsWith('-') ? styles.negativeValue : styles.positiveValue}>{eachCoinInfo.coinRate}%</p>
-                                            </div>
-                                            {/* </div> */}
-                                        </div>
-                                    ))
-                                }
+                        coinInfo.map((eachCoinInfo, index) => (
+                            <div className={styles.eachAsset} key={index}>
+                                <div className={styles.eachAsset__image}>
+                                    <Image src={eachCoinInfo.coinImage} alt={eachCoinInfo.coinName} />
+                                </div>
+                                {/* <div className={styles.eachAsset__info}> */}
+                                <div className={styles.eachAsset__name}>
+                                    <h6>{eachCoinInfo.coinCode}</h6>
+                                    <p>{eachCoinInfo.coinName}</p>
+                                </div>
+                                <div className={styles.eachAsset__priceArea}>
+                                    <h6>{eachCoinInfo.coinPrice}</h6>
+                                    <p className={eachCoinInfo.coinRate.startsWith('-') ? styles.negativeValue : styles.positiveValue}>{eachCoinInfo.coinRate}%</p>
+                                </div>
+                                {/* </div> */}
                             </div>
                         ))
                     }
