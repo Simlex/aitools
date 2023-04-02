@@ -11,10 +11,10 @@ interface CalculatorProps {
 const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
 
     const [selectedCoin, setSelectedCoin] = useState<string>();
-    const [isFuturesCalculatorVisible, setIsFuturesCalculatorVisible] = useState(true);
+    const [isFuturesCalculatorVisible, setIsFuturesCalculatorVisible] = useState(true); 
 
     const [futuresCoinTabVisibility, setFuturesCoinTabVisibility] = useState(false);
-    const [futuresBuyTabVisibility, setFuturesBuyTabVisibility] = useState(true);
+    const [buyTabVisibility, setBuyTabVisibility] = useState(true);
 
     const [tpselected, setTpselected] = useState(false);
     const [isReducedOnlySelected, setIsReducedOnlySelected] = useState(false);
@@ -61,11 +61,11 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                         </div>
                         <div className={styles.calculatorSection}>
                             <div className={styles.calculatorSection__tradeOptions}>
-                                <span className={styles.indicator} style={futuresBuyTabVisibility ? { left: 0, backgroundColor: '#2EBD85' } : { left: '50%', backgroundColor: '#DC143C' }}></span>
-                                <span onClick={() => setFuturesBuyTabVisibility(true)}><p>Buy</p></span>
-                                <span onClick={() => setFuturesBuyTabVisibility(false)}><p>Sell</p></span>
+                                <span className={styles.indicator} style={buyTabVisibility ? { left: 0, backgroundColor: '#2EBD85' } : { left: '50%', backgroundColor: '#DC143C' }}></span>
+                                <span onClick={() => setBuyTabVisibility(true)}><p>Buy</p></span>
+                                <span onClick={() => setBuyTabVisibility(false)}><p>Sell</p></span>
                             </div>
-                            {futuresBuyTabVisibility &&
+                            {isFuturesCalculatorVisible &&
                                 <div className={styles.calculatorSection__availableBalance}>
                                     <p className={styles.sectionIndicator}>Avbl</p>
                                     <p className={styles.avblPrice}>20,203 USDT</p>
@@ -93,7 +93,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                     </span>
                                 </div>
                                 <div className={styles.tradeCalculator__tradeAmount}>
-                                    {futuresBuyTabVisibility &&
+                                    {isFuturesCalculatorVisible &&
                                         <div className={styles.tab}>
                                             <span>BTC</span>
                                             <span>USDT</span>
@@ -108,11 +108,11 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                         </span>
                                     </div>
                                 </div>
-                                {!futuresBuyTabVisibility &&
+                                {!isFuturesCalculatorVisible &&
                                     <div className={styles.tradeCalculator__totalAmount}>
                                         <div className={styles.percentageTab}>
                                             <div className={styles.indicatorBar} onClick={() => setPercentageValue(0)}>
-                                                <span style={{ width: `${percentageValue}%` }}></span>
+                                                <span style={{ width: `${percentageValue}%`, backgroundColor: `${buyTabVisibility ? '#2EBD85' : '#DC143C'}` }}></span>
                                             </div>
                                             <div className={styles.values}>
                                                 <span onClick={() => setPercentageValue(25)}>25%</span>
@@ -125,7 +125,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                             <input type='text' placeholder="Total (USDT)" />
                                         </div>
                                     </div>}
-                                {futuresBuyTabVisibility &&
+                                {isFuturesCalculatorVisible &&
                                     <div className={styles.tradeCalculator__sliderArea}>
                                         <input type="range" className={styles.rangeSlider} min="0" max="20" value="10" step="2" />
                                     </div>}
@@ -147,13 +147,13 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                         </div>
                                     </div>
                                 </div>
-                                {!futuresBuyTabVisibility &&
+                                {!isFuturesCalculatorVisible &&
                                     <div className={styles.calculatorSection__availableBalance} style={{marginBottom: '4px'}}>
                                         <p className={styles.sectionIndicator}>Avbl</p>
                                         <p className={styles.avblPrice}>20,203 USDT</p>
                                     </div>}
                                 <div className={styles.summaryCheckout}>
-                                    {futuresBuyTabVisibility &&
+                                    {isFuturesCalculatorVisible &&
                                         <>
                                             <div className={styles.summaryCheckout__maxValue}>
                                                 <p className={styles.sectionIndicator}>Max</p>
@@ -164,7 +164,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                                 <p className={styles.price}>0.00 BTC</p>
                                             </div>
                                         </>}
-                                    {futuresBuyTabVisibility ? <button>Buy/Long</button> : <button style={{ backgroundColor: '#DC143C' }}>Sell/Short</button>}
+                                    {buyTabVisibility ? <button>Buy/Long</button> : <button style={{ backgroundColor: '#DC143C' }}>Sell/Short</button>}
                                 </div>
                             </div>
                         </div>
