@@ -3,36 +3,6 @@
 @import "./reuseables";
 
 .body {
-    .topSection {
-        position: sticky;
-        width: 100%;
-        top: 0px;
-        // height: 260px;
-        // padding: 20px;
-        background-color: $secondary-color;
-    }
-    
-    .negativeValue {
-        color: $red;
-    }
-    .positiveValue {
-        color: $green;
-    }
-
-    .topArea {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-        p {
-            color: rgba($white, 0.6);
-        }
-    }
-
-    .sectionIndicator {
-        color: rgba($white, 0.6);
-        margin-bottom: 12px;
-    }
 
     .topGainers {
         display: flex;
