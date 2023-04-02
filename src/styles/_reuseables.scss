@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap");
 
-@import "./mixins.scss"; 
+@import "./mixins.scss";
 @import "./variables.scss";
-
-
 
 @mixin smallLaptop() {
   @media (max-width: (1200px)) {
@@ -177,4 +175,35 @@
       fill: #eb485b;
     }
   }
+}
+
+.topSection {
+  position: sticky;
+  width: 100%;
+  top: 0px;
+  // height: 260px;
+  // padding: 20px;
+  background-color: $secondary-color;
+}
+
+.topArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  p {
+    color: rgba($white, 0.6);
+  }
+}
+
+.negativeValue {
+  color: $red;
+}
+.positiveValue {
+  color: $green;
+}
+
+.sectionIndicator {
+  color: rgba($white, 0.6);
+  margin-bottom: 12px;
 }
