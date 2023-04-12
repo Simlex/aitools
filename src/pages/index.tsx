@@ -92,7 +92,7 @@ export default function Home() {
             <p>In only a few clicks, use the native web app to access any tool you want.</p>
             <div className={styles.lhs__activities}>
               {activities.map((eachActivity, index) => (
-                <div className={styles.activity}>
+                <div className={styles.activity} key={index}>
                   <h4>{eachActivity.title}</h4>
                   {eachActivity.text.length < 2 ? 
                   <span  data-aos="zoom-out-up">{eachActivity.text[0]}</span> :
@@ -143,7 +143,7 @@ export default function Home() {
           </div>
           <div className={styles.updateSection__content}>
             <h4>Stay Updated</h4>
-            <p>To stay informed about product development and launch details, you can click the 'Stay Updated' button below.</p>
+            <p>To stay informed about product development and launch details, you can click the &apos;Stay Updated&apos; button below.</p>
             <div className={styles.actionButtons}>
               <button>Stay Updated</button>
               <button className={styles.textBtn}>Read whitepaper</button>
