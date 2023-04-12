@@ -61,17 +61,19 @@
 
 @mixin medium-button {
   width: fit-content;
-  border-radius: 50px;
+  border-radius: 14px;
   cursor: pointer;
   font-size: $font-size-16 - 2px;
-  padding: 0.8rem 1.1rem;
+  font-weight: $fontWeight-700;
+  padding: 0.6rem 1.1rem;
   border: none;
-  background-color: $primary-color;
-  color: $white;
+  background-color: $white;
+  color: $primary-color;
   display: flex;
   align-items: center;
   gap: 8px;
   transition: all 300ms ease;
+  cursor: pointer;
   svg {
     opacity: 1;
     color: #fff;
@@ -83,6 +85,8 @@
 
   &:hover {
     gap: 16px;
+    background-color: $primary-color;
+    color: $white;
     svg {
       opacity: 1;
     }
@@ -140,6 +144,38 @@
   flex-direction: column;
   @include tablet {
     padding: $padding-mobile;
+  }
+
+  button {
+    @include medium-button();
+  }
+
+  .textBtn {
+    background-color: transparent;
+    position: relative;
+    color: $white;
+    cursor: pointer;
+    padding: 0;
+    // border: 1px solid;
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: $white;
+      content: '';
+      bottom: 0;
+      left: 0;
+      transform: translateY(0px);
+      opacity: 0;
+      transition: all 200ms ease;
+    }
+    &:hover {
+      background: transparent;
+      &::after {
+        opacity: 1;
+        transform: translateY(10px);
+      }
+    }
   }
 }
 
@@ -206,4 +242,69 @@
 .sectionIndicator {
   color: rgba($white, 0.6);
   margin-bottom: 12px;
+}
+
+.appLoader {
+  margin: auto;
+  // border: 1px solid #fff;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  font-size: 24px;
+  font-weight: $fontWeight-700;
+  position: relative;
+  transform: translateZ(0);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0px 0px 24px 2px rgba(83, 215, 255, 0.08);
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      font-size: $font-size-16 - 4px;
+      font-weight: $fontWeight-300;
+    }
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+  }
+
+  &::before {
+    animation: 6s rotate linear infinite;
+    width: 200%;
+    height: 200%;
+    background: var(--tile-border);
+    background: conic-gradient(
+      from 179.82deg at 50% 50%,
+      rgba(12, 20, 20, 0.24) 0deg,
+      rgba(89, 0, 159, 0.0689191) 80.63deg,
+      rgba(112, 195, 255, 0.442708) 163.12deg,
+      rgba(16, 129, 101, 0.49775) 294.38deg,
+      #0f1f1b 360deg
+    );
+  }
+  &::after {
+    inset: 0;
+    padding: 1px;
+    border-radius: var(--border-radius);
+    background: linear-gradient(to bottom right, rgba($primary-color, 0.4), rgba(var(--tile-end-rgb), 1));
+    background-clip: content-box;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
