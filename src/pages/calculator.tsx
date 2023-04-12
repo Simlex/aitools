@@ -56,7 +56,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                     <>
                         <div className={styles.tabSection}>
                             <span className={isFuturesCalculatorVisible ? styles.active : ''} onClick={() => setIsFuturesCalculatorVisible(true)}>Futures</span>
-                            <span className={isFuturesCalculatorVisible ? '' : styles.active} onClick={() => setIsFuturesCalculatorVisible(false)}>Spots</span>
+                            <span className={isFuturesCalculatorVisible ? '' : styles.active} onClick={() => setIsFuturesCalculatorVisible(false)}>DCA</span>
                             <span className={styles.indicator} style={{ left: `${isFuturesCalculatorVisible ? '0' : '50%'}` }}></span>
                         </div>
                         <div className={styles.calculatorSection}>
