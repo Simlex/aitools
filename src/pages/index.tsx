@@ -2,17 +2,30 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '@/styles/Home.module.scss';
 import { TradeSaveTimeIcon, UpdateNotificationIcon } from '@/components/SVGs/SVGicons';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import AOS from 'aos';
 import useResponsive from '@/hooks/useResponsiveness';
+import { Link as ScrollLink } from 'react-scroll'
 
 export default function Home() {
 
   useEffect(() => {
-      AOS.init();
+    AOS.init();
   }, []);
 
   const onMobile = useResponsive();
+
+  // const useFocus = () => {
+  //   const htmlElRef = useRef<HTMLInputElement>(null)
+  //   const setFocus = () => { htmlElRef.current && htmlElRef.current.focus() }
+
+  //   return [htmlElRef, setFocus]
+  // }
+  // const [inputRef, setInputFocus] = useFocus();
+  
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [getNotifiedIsActive, setGetNotifiedIsActive] = useState(false)
 
   const activities = [
     {
@@ -52,7 +65,13 @@ export default function Home() {
           <div className={styles.topBar__logo} data-aos="fade-down">
             <Image src='/logo_white.png' alt="App logo" fill />
           </div>
-          <button>Stay Updated</button>
+          <ScrollLink to="stayUpdated"
+            onClick={() => {
+              setGetNotifiedIsActive(true)
+              inputRef.current && inputRef.current.focus()
+            }} smooth={true} duration={500} offset={0}>
+            <button>Stay Updated</button>
+          </ScrollLink>
         </div>
 
         <div className={styles.heroSection}>
@@ -62,7 +81,13 @@ export default function Home() {
               <p>Trade seamlessly and efficiently. The integration of different efficient crypto trading tools <span>powered by AI.</span></p>
             </div>
             <div className={styles.lhs__actionButtons}>
-              <button>Stay Updated</button>
+              <ScrollLink to="stayUpdated"
+                onClick={() => {
+                  setGetNotifiedIsActive(true)
+                  inputRef.current && inputRef.current.focus()
+                }} smooth={true} duration={500} offset={0}>
+                <button>Stay Updated</button>
+              </ScrollLink>
               <button className={styles.textBtn}>Read whitepaper</button>
             </div>
           </div>
@@ -94,11 +119,11 @@ export default function Home() {
               {activities.map((eachActivity, index) => (
                 <div className={styles.activity} key={index}>
                   <h4>{eachActivity.title}</h4>
-                  {eachActivity.text.length < 2 ? 
-                  <span  data-aos="zoom-out-up">{eachActivity.text[0]}</span> :
+                  {eachActivity.text.length < 2 ?
+                    <span data-aos="zoom-out-up">{eachActivity.text[0]}</span> :
                     <div className={styles.activityGrp}>
                       {eachActivity.text.map((activityText, index) => (
-                        <span  data-aos="zoom-out-up" key={index}>{activityText}</span>
+                        <span data-aos="zoom-out-up" key={index}>{activityText}</span>
                       ))}
                     </div>}
                 </div>
@@ -137,7 +162,7 @@ export default function Home() {
           <span className='line'></span>
         </div>
 
-        <div className={styles.updateSection}  data-aos="fade-up">
+        <div className={styles.updateSection} data-aos="fade-up">
           <div className={styles.updateSection__topIcon}>
             <UpdateNotificationIcon />
           </div>
@@ -145,7 +170,13 @@ export default function Home() {
             <h4>Stay Updated</h4>
             <p>To stay informed about product development and launch details, you can click the &apos;Stay Updated&apos; button below.</p>
             <div className={styles.actionButtons}>
-              <button>Stay Updated</button>
+              <ScrollLink to="stayUpdated"
+                onClick={() => {
+                  setGetNotifiedIsActive(true)
+                  inputRef.current && inputRef.current.focus()
+                }} smooth={true} duration={500} offset={0}>
+                <button>Stay Updated</button>
+              </ScrollLink>
               <button className={styles.textBtn}>Read whitepaper</button>
             </div>
           </div>
@@ -155,11 +186,11 @@ export default function Home() {
           <h2>Roadmap</h2>
         </div>
 
-        <div className={styles.getNotifiedSection}>
+        <div className={styles.getNotifiedSection} id="stayUpdated" style={getNotifiedIsActive ? { borderColor: '#d1afff', boxShadow: '0px 0px 8px 2px rgba(209, 175, 255, 0.25)' } : {}}>
           <h2>Get Notified</h2>
           <div className={styles.getNotifiedSection__input}>
-            <input type='text' placeholder='Your email' />
-            <button>Go</button>
+            <input type='text' placeholder='Your email' ref={inputRef} />
+            <button>Send</button>
           </div>
         </div>
 
