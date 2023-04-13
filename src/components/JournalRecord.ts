@@ -1,0 +1,31 @@
+export type JournalRecord = {
+    date: string,
+    entryTime: string,
+    exitTime: string,
+    stayTime: string,
+    assetName: string,
+    buyPrice: string,
+    sellPrice: string,
+    stopLoss: string,
+    quantity: string,
+    tradeResult: boolean,
+    mistake: string,
+    lessonLearnt: string,
+    tradeReason: string,
+}[]
+
+export type EachJournalRecord = {
+    date?: string,
+    entryTime?: string,
+    exitTime?: string,
+    stayTime?: string,
+    assetName?: string,
+    buyPrice?: string,
+    sellPrice?: string,
+    stopLoss?: string,
+    quantity?: string,
+    tradeResult?: boolean,
+    mistake?: string,
+    lessonLearnt?: string,
+    tradeReason?: string,
+}
