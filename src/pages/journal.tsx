@@ -68,7 +68,7 @@ const Journal: FunctionComponent<JournalProps> = (): ReactElement => {
                     :
                     <div className={styles.recordList}>
                         {recordList.map((eachRecord, index) => (
-                            <EachJournalRecord record={eachRecord} />
+                            <EachJournalRecord record={eachRecord} key={index} />
                         ))}
                         <button onClick={() => setJournalFormVisibility(true)}>Add New</button>
                     </div>
