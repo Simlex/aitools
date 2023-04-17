@@ -140,7 +140,7 @@ export default function Home() {
               <li>About us</li>
             </ScrollLink>
             <ScrollLink to="teamsSection" smooth={true} duration={500} offset={0}>
-              <li>Teams</li>
+              <li>Team</li>
             </ScrollLink>
             <ScrollLink to="tokenSection" smooth={true} duration={500} offset={0}>
               <li>Token</li>
@@ -183,7 +183,7 @@ export default function Home() {
                       <li>About us</li>
                     </ScrollLink>
                     <ScrollLink to="teamsSection" smooth={true} duration={500} offset={0} onClick={() => setIsNavOpen(false)}>
-                      <li>Teams</li>
+                      <li>Team</li>
                     </ScrollLink>
                     <ScrollLink to="tokenSection" smooth={true} duration={500} offset={0} onClick={() => setIsNavOpen(false)}>
                       <li>Token</li>
@@ -194,9 +194,13 @@ export default function Home() {
                     <ScrollLink to="partnersSection" smooth={true} duration={500} offset={0} onClick={() => setIsNavOpen(false)}>
                       <li>Partners</li>
                     </ScrollLink>
-                    <ScrollLink to="disclaimerSection" smooth={true} duration={500} offset={0} onClick={() => setIsNavOpen(false)}>
+                    <a href='/disclaimer.docx' download
+                      onClick={() => {
+                        setIsDisclaimerVisible(!isDisclaimerVisible)
+                        setIsNavOpen(false)
+                      }}>
                       <li>Disclaimer</li>
-                    </ScrollLink>
+                    </a>
                   </div>
                 </div>
               </div>}
@@ -347,7 +351,7 @@ export default function Home() {
         </div>
 
         <div className={styles.teamsSection} id='teamsSection'>
-          <h2>Teams</h2>
+          <h2>Team</h2>
           <div className={styles.teamsSection__info}>
             <p>AITools was founded by Michael Keith with the mission of creating an all-in-one, cost efficient, energy efficient, platform that contains necessary tools for every crypto trader.</p>
             <p>The AITools team includes seasoned crypto traders, researchers, entrepreneurs, and marketers. Our core platform and AI teams are further complemented by specialized teams devoted to application areas such as finance, Blockchain technology, De-Fi, AI.</p>
