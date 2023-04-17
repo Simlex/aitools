@@ -260,6 +260,24 @@ export function CalenderIcon({ width, height, className, fontSize, style, onClic
   )
 };
 
+export function HamburgerMenuIcon({ width, height, className, fontSize, style, onClick }: any) {
+  return (
+    <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4.5C2 4.22386 2.13168 4 2.29412 4H21.7059C21.8683 4 22 4.22386 22 4.5C22 4.77614 21.8683 5 21.7059 5H2.29412C2.13168 5 2 4.77614 2 4.5Z" fill="white" />
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2 11.5C2 11.2239 2.13168 11 2.29412 11H21.7059C21.8683 11 22 11.2239 22 11.5C22 11.7761 21.8683 12 21.7059 12H2.29412C2.13168 12 2 11.7761 2 11.5Z" fill="white" />
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2 18.5C2 18.2239 2.13168 18 2.29412 18H21.7059C21.8683 18 22 18.2239 22 18.5C22 18.7761 21.8683 19 21.7059 19H2.29412C2.13168 19 2 18.7761 2 18.5Z" fill="white" />
+    </svg>
+  )
+};
+
+export function ArrowUpIcon({ width, height, className, fontSize, style, onClick }: any) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22ZM11 12V15C11 15.55 11.45 16 12 16C12.55 16 13 15.55 13 15V12H14.79C15.24 12 15.46 11.46 15.14 11.15L12.35 8.36C12.15 8.16 11.84 8.16 11.64 8.36L8.85 11.15C8.7809 11.2205 8.73421 11.3099 8.71582 11.4069C8.69743 11.5038 8.70816 11.6041 8.74665 11.695C8.78515 11.7859 8.8497 11.8634 8.93215 11.9177C9.01461 11.9719 9.11129 12.0006 9.21 12H11Z" fill="white" />
+    </svg>
+  )
+};
+
 export function SelectionIcon({ width, height, className, fontSize, style, onClick, inverted, checked }: any) {
   return (
     <>
