@@ -39,6 +39,109 @@
                 height: 100%;
             }
         }
+        &__listItems {
+            display: flex;
+            gap: 12px;
+            font-size: $font-size-16 - 2px;
+            li {
+                list-style: none;
+                // border: 1px solid;
+                cursor: pointer;
+                &:hover {
+                    color: $primary-color-light;
+                }
+            }
+        }
+        &__rhs {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            .navIcon {
+                // border: 1px solid #fff;
+                display: inline-flex;
+                padding: 8px;
+                background-color: $primary-color;
+                border-radius: 12px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            .mobileNavContainer {
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: 0;
+                // background-color: #fff;
+                background: rgba(59, 57, 57, 0.7);
+                backdrop-filter: blur(45px);
+                // display: block;
+                z-index: 10;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+                animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+                @-webkit-keyframes slide-bottom {
+                    from {
+                        opacity: 0;
+                        right: -100%;
+                    }
+                }
+                @keyframes slide-bottom {
+                    from {
+                        opacity: 0;
+                        right: -100%;
+                    }
+                }
+
+                &__topArea {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    .logo {
+                        width: 48px;
+                        height: 48px;
+                    }
+                    .closeIcon {
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+
+                &__navigationLinks {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 24px;
+                    width: 100%;
+                    height: 80%;
+                    .navLinks {
+                        li {
+                            list-style: none;
+                            color: $white;
+                            text-align: center;
+                            // border: 1px solid;
+                            padding: 12px;
+                            margin-bottom: 32px;
+                            font-size: 20px;
+                        }
+                    }
+                    .cta {
+                        button {
+                            @include big-button;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     h2 {
@@ -145,6 +248,21 @@
             place-items: center;
             border-radius: 10px;
             margin: 0 auto;
+            margin-bottom: 12px;
+        }
+        &__tokenInfo {
+            .header {
+                margin-bottom: 12px;
+
+                h4 {
+                    color: $primary-color-light;
+                    font-size: $font-size-40;
+                }
+                span {
+                    color: $primary-color-light;
+                    font-weight: $fontWeight-800;
+                }
+            }
         }
     }
 
@@ -325,6 +443,25 @@
         }
     }
 
+    .partnersSection {
+        @extend .aboutSection;
+        padding-bottom: 120px;
+        &__list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            // height: 100px;
+            // overflow: hidden;
+            span {
+                width: auto;
+                height: 110px;
+            }
+        }
+    }
+
     .updateSection {
         @extend .aboutSection;
         background: linear-gradient(180deg, #2e2e2e 0%, rgba(46, 46, 46, 0) 100%);
@@ -360,6 +497,128 @@
 
     .roadmapSection {
         @extend .aboutSection;
+        margin: 32px 0;
+
+        .roadmapContainer {
+            margin-top: 52px;
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+            overflow-x: auto;
+            @extend .scrollArea;
+            padding-bottom: 10px;
+            &::-webkit-scrollbar {
+                height: 4px;
+                // background-color: #c8c8c8;
+                background-color: rgba($color: $primary-color, $alpha: 0.3);
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba($color: #fff, $alpha: 0.5);
+            }
+
+            .eachRoadMap {
+                min-width: 250px;
+                // border: 1px solid #fff;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                &__title {
+                    font-size: $font-size-24;
+                    font-weight: $fontWeight-900;
+                }
+                &__line {
+                    margin: 12px 0px;
+                    width: 100%;
+                    height: 6px;
+                    background-color: $primary-color-light;
+                    display: grid;
+                    place-items: center;
+
+                    span {
+                        width: 18px;
+                        height: 18px;
+                        background-color: $primary-color;
+                        transform: translateY(-6px);
+                        border-radius: 100%;
+                        display: grid;
+                        place-items: center;
+                        &::after {
+                            background-color: $white;
+                            width: 60%;
+                            height: 60%;
+                            content: "";
+                            border-radius: 100%;
+                        }
+                    }
+                }
+                &__activity {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+                    li {
+                        list-style: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .teamsSection {
+        @extend .aboutSection;
+        margin: 32px 0;
+
+        .teamsContainer {
+            display: grid;
+            // grid-template-columns: repeat(auto, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            .eachTeamMember {
+                // border: 1px solid #fff;
+                background: linear-gradient(180deg, #2e2e2e 0%, rgba(46, 46, 46, 0) 100%);
+                border: 1px solid rgba($color: #fff, $alpha: 0.2);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px;
+                border-radius: 24px;
+                // max-width: 250px;
+
+                &__image {
+                    width: 140px;
+                    height: 140px;
+                    border-radius: 100%;
+                    overflow: hidden;
+                    img {
+                        object-fit: cover;
+                        object-position: top;
+                    }
+                }
+                &__info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    // border: 1px solid #fff;
+                    margin: 8px 0;
+                    h6 {
+                        font-size: $font-size-16 - 2px;
+                        font-weight: $fontWeight-700;
+                        margin: 0;
+                        margin-bottom: 4px;
+                        line-height: $font-size-16 - 2px;
+                    }
+                    p {
+                        margin: 0;
+                        font-size: $font-size-16 - 6px;
+                        line-height: $font-size-16 - 6px;
+                    }
+                }
+                button {
+                    padding: 4px 12px;
+                    font-size: $font-size-16 - 4px;
+                }
+            }
+        }
     }
 
     .getNotifiedSection {
@@ -368,6 +627,7 @@
         border: 1px solid transparent;
         margin-bottom: 48px;
         border-radius: 32px;
+        transition: all 600ms ease;
         &__input {
             margin: 0 auto;
             display: flex;
@@ -378,7 +638,7 @@
             margin-top: 24px;
             input {
                 // border: 1px solid #fff;
-                padding: 8px;
+                padding: 12px;
                 height: 100%;
                 min-height: 37.2px;
                 min-width: 300px;
@@ -416,5 +676,117 @@
     svg {
         width: 48px;
         height: 48px;
+    }
+}
+
+.howToBuySection {
+    @extend .saveTimeSection;
+    justify-content: flex-start;
+    gap: 24px;
+    background-color: $white;
+    @include tablet {
+        flex-direction: column;
+        padding-top: 24px;
+        padding-bottom: 64px;
+        &__lhs {
+            overflow: hidden;
+            width: 100%;
+            .image {
+                width: 400px;
+                // border: 1px solid #000;
+                overflow: hidden;
+                margin: 0 auto;
+                img {
+                    width: 500px;
+                    object-fit: cover;
+                    object-position: 0px;
+                }
+            }
+        }
+        &__rhs {
+            // border: 1px solid #000;
+            width: 100%;
+            align-items: center;
+        }
+    }
+    &__lhs {
+        // border: 1px solid #fff;
+        .image {
+            width: 400px;
+            img {
+                width: 500px;
+                object-fit: cover;
+                object-position: -60px;
+            }
+        }
+    }
+    &__rhs {
+        color: $primary-color;
+        // border: 1px solid #000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h3 {
+            font-size: $font-size-40;
+            span {
+                color: $secondary-color;
+            }
+        }
+        p {
+            font-size: $font-size-18;
+        }
+        .telegramArea {
+            display: flex;
+            align-items: center;
+            p {
+                margin: 0;
+                display: flex;
+                align-items: center;
+                svg {
+                    rotate: 90deg;
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 2px;
+                    // border: 1px solid #000;
+                    path {
+                        fill: $secondary-color;
+                    }
+                }
+            }
+            button {
+                margin-left: 12px;
+                @include small-button;
+                &:hover {
+                    background-color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+.scrollToTopIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: $white;
+    position: fixed;
+    bottom: 6%;
+    right: 3%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 100;
+    &:hover {
+        background-color: $primary-color;
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+    svg {
+        path {
+            fill: $primary-color;
+        }
     }
 }
