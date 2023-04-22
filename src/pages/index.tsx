@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '@/styles/Home.module.scss';
-import { ArrowDownIcon, ArrowUpIcon, CloseMenuIcon, HamburgerMenuIcon, TradeSaveTimeIcon, UpdateNotificationIcon } from '@/components/SVGs/SVGicons';
+import { ArrowDownIcon, ArrowUpIcon, CloseMenuIcon, HamburgerMenuIcon, MediumIcon, TelegramIcon, TradeSaveTimeIcon, TwitterIcon, UpdateNotificationIcon, YoutubeIcon } from '@/components/SVGs/SVGicons';
 import { useEffect, useState, useRef } from 'react';
 import AOS from 'aos';
 import useResponsive from '@/hooks/useResponsiveness';
@@ -408,6 +408,20 @@ export default function Home() {
         <div className={styles.footerArea}>
           <div className={styles.footerArea__logo}>
             <Image src='/logo_white.png' alt='Logo' fill />
+          </div>
+          <div className={styles.socialMediaIcons}>
+            <Link href='https://twitter.com/AITools_?s=09' target='_blank'>
+              <span><TwitterIcon /></span>
+            </Link>
+            <Link href='https://t.me/AITools_Token' target='_blank'>
+              <span><TelegramIcon /></span>
+            </Link>
+            <Link href='https://www.youtube.com/@AIToolsPro' target='_blank'>
+              <span><YoutubeIcon /></span>
+            </Link>
+            <Link href='https://medium.com/@aitoolspro.dev' target='_blank'>
+              <span><MediumIcon /></span>
+            </Link>
           </div>
           <p>Copyright &copy; 2023</p>
         </div>

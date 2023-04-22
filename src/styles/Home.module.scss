@@ -667,6 +667,46 @@
             height: 48px;
             position: relative;
         }
+        .socialMediaIcons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            span {
+                display: inline-flex;
+
+                // &:hover {
+                //     svg {
+                //         &:nth-child(1) {
+                //             path {
+                //                 fill: #1d9bf0;
+                //             }
+                //         }
+                //         &:nth-child(2) {
+                //             path {
+                //                 fill: #28a8e9;
+                //             }
+                //         }
+                //         &:nth-child(3) {
+                //             path {
+                //                 fill: #ff3d3d;
+                //             }
+                //         }
+                //         // &:nth-child(4) {
+                //         //     path {
+                //         //         fill: #1d9bf0;
+                //         //     }
+                //         // }
+                //     }
+                // }
+                svg {
+                    width: 40px;
+                    height: 40px;
+                    &:hover {
+                        transform: translateY(-4px)
+                    }
+                }
+            }
+        }
     }
 }
 
