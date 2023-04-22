@@ -9,6 +9,10 @@ import { Link as ScrollLink } from 'react-scroll'
 import Link from 'next/link';
 import images from '../../public/images';
 import Disclaimer from '@/components/Disclaimer';
+import { GetServerSideProps } from 'next';
+import path from 'path';
+
+
 
 export default function Home() {
 
@@ -48,7 +52,7 @@ export default function Home() {
   const roadmapData = [
     {
       segment: 'Q2 2023',
-      activities: ['Concept development', 'Build user interface and UI live', 'AITools web app', 'Extensive marketing campaigns', 'DEX listings']
+      activities: ['Concept development', 'Build User Interface and UX live', 'AITools web app', 'Extensive marketing campaigns', 'DEX listings']
     },
     {
       segment: 'Q3 2023',
@@ -151,7 +155,10 @@ export default function Home() {
             <ScrollLink to="partnersSection" smooth={true} duration={500} offset={0}>
               <li>Partners</li>
             </ScrollLink>
-            <a href='/disclaimer.docx' download onClick={() => setIsDisclaimerVisible(!isDisclaimerVisible)}>
+            {/* <Link href="/aitools_disclaimer.docx" download="aitools_disclaimer.docx" legacyBehavior>
+              <a><li>Disclaimer</li></a>
+            </Link> */}
+            <a href='/aitools_disclaimer.docx' download onClick={() => setIsDisclaimerVisible(!isDisclaimerVisible)}>
               <li>Disclaimer</li>
             </a>
           </ul>}
@@ -194,7 +201,7 @@ export default function Home() {
                     <ScrollLink to="partnersSection" smooth={true} duration={500} offset={0} onClick={() => setIsNavOpen(false)}>
                       <li>Partners</li>
                     </ScrollLink>
-                    <a href='/disclaimer.docx' download
+                    <a href='/aitools_disclaimer.docx' download
                       onClick={() => {
                         setIsDisclaimerVisible(!isDisclaimerVisible)
                         setIsNavOpen(false)
