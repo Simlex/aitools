@@ -631,7 +631,7 @@
 
     .getNotifiedSection {
         @extend .aboutSection;
-        padding-bottom: 96px;
+        padding-bottom: 48px;
         border: 1px solid transparent;
         margin-bottom: 48px;
         border-radius: 32px;
@@ -655,6 +655,11 @@
                 outline: none;
             }
         }
+    }
+
+    .aboutAiTools {
+        padding-bottom: 48px;
+        text-align: center;
     }
 
     .footerArea {

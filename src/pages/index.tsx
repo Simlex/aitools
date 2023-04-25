@@ -12,8 +12,6 @@ import Disclaimer from '@/components/Disclaimer';
 import { GetServerSideProps } from 'next';
 import path from 'path';
 
-
-
 export default function Home() {
 
   useEffect(() => {
@@ -72,7 +70,7 @@ export default function Home() {
     {
       name: 'Micheal Keith',
       role: 'Founder/CEO',
-      twitterLink: 'https://twitter.com/keith_micheal_?s=11',
+      twitterLink: 'https://twitter.com/Keith__micheal?t=SBJNJW-awWOzFfpiQs8Tow&s=09',
       image: images.micheal
     },
     {
@@ -112,6 +110,33 @@ export default function Home() {
       image: images.tradingView,
     },
   ]
+
+
+  const [marketData, setMarketData] = useState();
+
+  /**
+   * Fetches courses data
+   */
+  // const handleFetchCoinPrices = async () => {
+  //   let result = await fetch(
+  //     `https://api.coincap.io/v2/markets`,
+  //     {
+  //       method: "get",
+  //       // credentials: "include",
+  //     }
+  //   );
+
+  //   const data = await result.json();
+  
+  //   setMarketData(data.data);  
+  
+  //   console.log("data fetched: ", data.data);
+  //   return data; 
+  // };
+
+  // useEffect(() => {
+  //   handleFetchCoinPrices();
+  // }, []);
 
   return (
     <>
@@ -403,6 +428,14 @@ export default function Home() {
             <input type='text' placeholder='Your email' ref={inputRef} />
             <button>Send</button>
           </div>
+        </div>
+
+        <div className={styles.aboutAiTools}>
+          <p>At AITools, we highly value our community and strive to provide a welcoming environment
+            where like-minded individuals can connect and engage. If you have any questions or would
+            like to connect with us, we encourage you to join our social media channels.
+            Our community is growing stronger every day, and we appreciate your support and
+            feedback as we continue to develop and improve our platform.</p>
         </div>
 
         <div className={styles.footerArea}>
