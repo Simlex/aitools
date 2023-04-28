@@ -11,6 +11,7 @@ import images from '../../public/images';
 import Disclaimer from '@/components/Disclaimer';
 import { GetServerSideProps } from 'next';
 import path from 'path';
+import WhitePaper from '@/components/WhitePaper';
 
 export default function Home() {
 
@@ -26,6 +27,7 @@ export default function Home() {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isDisclaimerVisible, setIsDisclaimerVisible] = useState(false);
+  const [isWhitePaperVisible, setIsWhitePaperVisible] = useState(false);
 
   const activities = [
     {
@@ -82,7 +84,7 @@ export default function Home() {
     {
       name: 'Austin Cole',
       role: 'AI Dev',
-      twitterLink: 'http://twitter.com/wayne_AITools',
+      twitterLink: 'https://twitter.com/austin_AITools?t=JYQ9M9KSF9LoJPq_v_N6UQ&s=09',
       image: images.austin
     },
     {
@@ -127,9 +129,9 @@ export default function Home() {
   //   );
 
   //   const data = await result.json();
-  
+
   //   setMarketData(data.data);  
-  
+
   //   console.log("data fetched: ", data.data);
   //   return data; 
   // };
@@ -153,6 +155,7 @@ export default function Home() {
       </ScrollLink>
 
       {isDisclaimerVisible && <Disclaimer visibility={isDisclaimerVisible} setVisibility={setIsDisclaimerVisible} />}
+      {isWhitePaperVisible && <WhitePaper visibility={isWhitePaperVisible} setVisibility={setIsWhitePaperVisible} />}
       <div className={styles.body} id="top">
         {/* <div className={styles.appLoader}>
           <div>
@@ -253,7 +256,9 @@ export default function Home() {
                 }} smooth={true} duration={500} offset={0}>
                 <button>Stay Updated</button>
               </ScrollLink>
-              <button className={styles.textBtn}>Read whitepaper</button>
+              <a href='/aITools_whitepaper.pdf' download onClick={() => setIsWhitePaperVisible(!isWhitePaperVisible)}>
+                <button className={styles.textBtn}>Read whitepaper</button>
+              </a>
             </div>
           </div>
           <div className={styles.rhs} data-aos={onMobile ? '' : "fade-left"}>
@@ -360,7 +365,9 @@ export default function Home() {
                 }} smooth={true} duration={500} offset={0}>
                 <button>Stay Updated</button>
               </ScrollLink>
-              <button className={styles.textBtn}>Read whitepaper</button>
+              <a href='/aITools_whitepaper.pdf' download onClick={() => setIsWhitePaperVisible(!isWhitePaperVisible)}>
+                <button className={styles.textBtn}>Read whitepaper</button>
+              </a>
             </div>
           </div>
         </div>
