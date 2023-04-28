@@ -118,6 +118,7 @@ const Tracker: FunctionComponent<TrackerProps> = ({ marketData }): ReactElement 
                         ))
                     }
                 </div>
+                <button>Add new asset</button>
             </div>
         </div>
     );
