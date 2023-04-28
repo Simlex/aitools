@@ -1,5 +1,5 @@
 import { PriceDownIcon, PriceUpIcon } from "@/components/SVGs/SVGicons";
-import { coinInfo } from "@/components/Tracker/coinInfo";
+// import { coinInfo } from "@/components/Tracker/coinInfo";
 import Image from "next/image";
 import { FunctionComponent, ReactElement, useState } from "react";
 import styles from '../styles/tracker.module.scss';
@@ -18,6 +18,43 @@ interface TrackerProps {
 const Tracker: FunctionComponent<TrackerProps> = ({ marketData }): ReactElement => {
 
 
+    const coinInfo = [
+        {
+            coinName: marketData && marketData[0]?.name,
+            coinCode: "BTC/USDT",
+            coinImage: BTC,
+            coinPrice: marketData ? `$${Number(marketData[0]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[0]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[1]?.name,
+            coinCode: "ETH/USDT",
+            coinImage: ETH,
+            coinPrice: marketData ? `$${Number(marketData[1]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[1]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[2]?.name,
+            coinCode: "XRP/USDT",
+            coinImage: XRP,
+            coinPrice: marketData ? `$${Number(marketData[2]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[2]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[3]?.name,
+            coinCode: "LTC/USDT",
+            coinImage: LTC,
+            coinPrice: marketData ? `$${Number(marketData[3]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[3]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[4]?.name,
+            coinCode: "TRX/USDT",
+            coinImage: TRX,
+            coinPrice: marketData ? `$${Number(marketData[4]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[4]?.changePercent24Hr).toFixed(2)}`,
+        },
+    ];
 
 
     return (
