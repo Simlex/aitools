@@ -11,8 +11,7 @@ import images from '../../public/images';
 import Disclaimer from '@/components/Disclaimer';
 import { GetServerSideProps } from 'next';
 import path from 'path';
-
-
+import WhitePaper from '@/components/WhitePaper';
 
 export default function Home() {
 
@@ -28,6 +27,7 @@ export default function Home() {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isDisclaimerVisible, setIsDisclaimerVisible] = useState(false);
+  const [isWhitePaperVisible, setIsWhitePaperVisible] = useState(false);
 
   const activities = [
     {
@@ -72,7 +72,7 @@ export default function Home() {
     {
       name: 'Micheal Keith',
       role: 'Founder/CEO',
-      twitterLink: 'https://twitter.com/keith_micheal_?s=11',
+      twitterLink: 'https://twitter.com/Keith__micheal?t=SBJNJW-awWOzFfpiQs8Tow&s=09',
       image: images.micheal
     },
     {
@@ -84,7 +84,7 @@ export default function Home() {
     {
       name: 'Austin Cole',
       role: 'AI Dev',
-      twitterLink: 'http://twitter.com/wayne_AITools',
+      twitterLink: 'https://twitter.com/austin_AITools?t=JYQ9M9KSF9LoJPq_v_N6UQ&s=09',
       image: images.austin
     },
     {
@@ -113,6 +113,33 @@ export default function Home() {
     },
   ]
 
+
+  const [marketData, setMarketData] = useState();
+
+  /**
+   * Fetches courses data
+   */
+  // const handleFetchCoinPrices = async () => {
+  //   let result = await fetch(
+  //     `https://api.coincap.io/v2/markets`,
+  //     {
+  //       method: "get",
+  //       // credentials: "include",
+  //     }
+  //   );
+
+  //   const data = await result.json();
+
+  //   setMarketData(data.data);  
+
+  //   console.log("data fetched: ", data.data);
+  //   return data; 
+  // };
+
+  // useEffect(() => {
+  //   handleFetchCoinPrices();
+  // }, []);
+
   return (
     <>
       <Head>
@@ -128,6 +155,7 @@ export default function Home() {
       </ScrollLink>
 
       {isDisclaimerVisible && <Disclaimer visibility={isDisclaimerVisible} setVisibility={setIsDisclaimerVisible} />}
+      {isWhitePaperVisible && <WhitePaper visibility={isWhitePaperVisible} setVisibility={setIsWhitePaperVisible} />}
       <div className={styles.body} id="top">
         {/* <div className={styles.appLoader}>
           <div>
@@ -228,7 +256,9 @@ export default function Home() {
                 }} smooth={true} duration={500} offset={0}>
                 <button>Stay Updated</button>
               </ScrollLink>
-              <button className={styles.textBtn}>Read whitepaper</button>
+              <a href='/aITools_whitepaper.pdf' download onClick={() => setIsWhitePaperVisible(!isWhitePaperVisible)}>
+                <button className={styles.textBtn}>Read whitepaper</button>
+              </a>
             </div>
           </div>
           <div className={styles.rhs} data-aos={onMobile ? '' : "fade-left"}>
@@ -335,7 +365,9 @@ export default function Home() {
                 }} smooth={true} duration={500} offset={0}>
                 <button>Stay Updated</button>
               </ScrollLink>
-              <button className={styles.textBtn}>Read whitepaper</button>
+              <a href='/aITools_whitepaper.pdf' download onClick={() => setIsWhitePaperVisible(!isWhitePaperVisible)}>
+                <button className={styles.textBtn}>Read whitepaper</button>
+              </a>
             </div>
           </div>
         </div>
@@ -403,6 +435,14 @@ export default function Home() {
             <input type='text' placeholder='Your email' ref={inputRef} />
             <button>Send</button>
           </div>
+        </div>
+
+        <div className={styles.aboutAiTools}>
+          <p>At AITools, we highly value our community and strive to provide a welcoming environment
+            where like-minded individuals can connect and engage. If you have any questions or would
+            like to connect with us, we encourage you to join our social media channels.
+            Our community is growing stronger every day, and we appreciate your support and
+            feedback as we continue to develop and improve our platform.</p>
         </div>
 
         <div className={styles.footerArea}>
