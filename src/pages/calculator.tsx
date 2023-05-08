@@ -3,15 +3,22 @@ import { coinInfo } from "@/components/Tracker/coinInfo";
 import Image from "next/image";
 import { FunctionComponent, ReactElement, useState } from "react";
 import styles from '../styles/calculator.module.scss';
+import IMarketDataCredentials from "@/constants/IMarketDataCredentials";
+
+import BTC from "cryptocurrency-icons/svg/icon/btc.svg";
+import ETH from "cryptocurrency-icons/svg/icon/eth.svg";
+import LTC from "cryptocurrency-icons/svg/icon/ltc.svg";
+import XRP from "cryptocurrency-icons/svg/icon/xrp.svg";
+import TRX from "cryptocurrency-icons/svg/icon/trx.svg"; 
 
 interface CalculatorProps {
-
+    marketData: IMarketDataCredentials[] | undefined
 }
 
-const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
+const Calculator: FunctionComponent<CalculatorProps> = ({ marketData }): ReactElement => {
 
     const [selectedCoin, setSelectedCoin] = useState<string>();
-    const [isFuturesCalculatorVisible, setIsFuturesCalculatorVisible] = useState(true); 
+    const [isFuturesCalculatorVisible, setIsFuturesCalculatorVisible] = useState(true);
 
     const [futuresCoinTabVisibility, setFuturesCoinTabVisibility] = useState(false);
     const [buyTabVisibility, setBuyTabVisibility] = useState(true);
@@ -20,6 +27,45 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
     const [isReducedOnlySelected, setIsReducedOnlySelected] = useState(false);
 
     const [percentageValue, setPercentageValue] = useState(0);
+
+
+    const coinInfo = [
+        {
+            coinName: marketData && marketData[0]?.name,
+            coinCode: "BTC/USDT",
+            coinImage: BTC,
+            coinPrice: marketData ? `$${Number(marketData[0]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[0]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[1]?.name,
+            coinCode: "ETH/USDT",
+            coinImage: ETH,
+            coinPrice: marketData ? `$${Number(marketData[1]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[1]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[2]?.name,
+            coinCode: "XRP/USDT",
+            coinImage: XRP,
+            coinPrice: marketData ? `$${Number(marketData[2]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[2]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[3]?.name,
+            coinCode: "LTC/USDT",
+            coinImage: LTC,
+            coinPrice: marketData ? `$${Number(marketData[3]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[3]?.changePercent24Hr).toFixed(2)}`,
+        },
+        {
+            coinName: marketData && marketData[4]?.name,
+            coinCode: "TRX/USDT",
+            coinImage: TRX,
+            coinPrice: marketData ? `$${Number(marketData[4]?.priceUsd).toFixed(2)}` : 'loading',
+            coinRate: marketData && `${Number(marketData[4]?.changePercent24Hr).toFixed(2)}`,
+        },
+    ];
 
     return (
         <div className={styles.body}>
@@ -36,7 +82,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                 coinInfo.map((eachCoinInfo, index) => (
                                     <div className={styles.eachAsset} key={index} onClick={() => setSelectedCoin(eachCoinInfo.coinCode)}>
                                         <div className={styles.eachAsset__image}>
-                                            <Image src={eachCoinInfo.coinImage} alt={eachCoinInfo.coinName} />
+                                            <Image src={eachCoinInfo.coinImage} alt={eachCoinInfo.coinName as string} />
                                         </div>
                                         <div className={styles.eachAsset__name}>
                                             <h6>{eachCoinInfo.coinCode}</h6>
@@ -44,7 +90,8 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                         </div>
                                         <div className={styles.eachAsset__priceArea}>
                                             <h6>{eachCoinInfo.coinPrice}</h6>
-                                            <p className={eachCoinInfo.coinRate.startsWith('-') ? styles.negativeValue : styles.positiveValue}>{eachCoinInfo.coinRate}%</p>
+                                            {/* <p className={eachCoinInfo.coinRate.startsWith('-') ? styles.negativeValue : styles.positiveValue}>{eachCoinInfo.coinRate}%</p> */}
+                                        <p className={styles.positiveValue}>{eachCoinInfo.coinRate}%</p>
                                         </div>
                                         {/* </div> */}
                                     </div>
@@ -148,7 +195,7 @@ const Calculator: FunctionComponent<CalculatorProps> = (): ReactElement => {
                                     </div>
                                 </div>
                                 {!isFuturesCalculatorVisible &&
-                                    <div className={styles.calculatorSection__availableBalance} style={{marginBottom: '4px'}}>
+                                    <div className={styles.calculatorSection__availableBalance} style={{ marginBottom: '4px' }}>
                                         <p className={styles.sectionIndicator}>Avbl</p>
                                         <p className={styles.avblPrice}>20,203 USDT</p>
                                     </div>}
