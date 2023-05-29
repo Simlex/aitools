@@ -355,8 +355,8 @@ export default function Home() {
           <h2>Partners</h2>
           <div className={styles.partnersSection__bigList}>
             {newPartnersData.map((eachPartner, index) =>
-              <Link href={eachPartner.link}> 
-                <span key={index}>
+              <Link href={eachPartner.link} key={index}> 
+                <span>
                   <Image src={eachPartner.image} alt="app image" />
                 </span>
               </Link>
