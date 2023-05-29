@@ -95,6 +95,17 @@ export default function Home() {
     },
   ]
 
+  const newPartnersData = [
+    {
+      image: images.pinksale,
+      link: 'http://pinksale.finance',
+    },
+    {
+      image: images.dexview,
+      link: 'http://dexTools.io',
+    }
+  ]
+
   const partnersData = [
     {
       image: images.bnb,
@@ -342,6 +353,15 @@ export default function Home() {
 
         <div className={styles.partnersSection} id="partnersSection">
           <h2>Partners</h2>
+          <div className={styles.partnersSection__bigList}>
+            {newPartnersData.map((eachPartner, index) =>
+              <Link href={eachPartner.link}> 
+                <span key={index}>
+                  <Image src={eachPartner.image} alt="app image" />
+                </span>
+              </Link>
+            )}
+          </div>
           <div className={styles.partnersSection__list}>
             {partnersData.map((eachPartner, index) =>
               <span key={index}>

@@ -460,6 +460,24 @@
                 height: 110px;
             }
         }
+        &__bigList {
+            @extend .partnersSection__list;
+            margin-bottom: 8px;
+            @include tablet {
+                flex-direction: column;
+                span {
+                    height: 80px;
+                }
+            }
+            span {
+                width: auto;
+                height: 160px;
+                display: flex;
+                img {
+                    object-fit: cover;
+                }
+            }
+        }
     }
 
     .updateSection {
@@ -707,7 +725,7 @@
                     width: 40px;
                     height: 40px;
                     &:hover {
-                        transform: translateY(-4px)
+                        transform: translateY(-4px);
                     }
                 }
             }

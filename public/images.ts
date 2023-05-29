@@ -8,6 +8,8 @@ import pancake from "./pancake.jpg";
 import tradingView from "./tradingView.jpg";
 import dexTools from "./dexTools.jpg";
 import coming_soon from "./coming_soon.jpg";
+import pinksale from "./pinksale.png"; 
+import dexview from "./dexview.png"; 
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
@@ -20,5 +22,7 @@ export default {
   pancake,
   tradingView,
   dexTools,
-  coming_soon
+  coming_soon,
+  pinksale,
+  dexview 
 };
